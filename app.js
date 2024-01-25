@@ -4,19 +4,10 @@ const queries = require('./queries')
 const cors = require('cors')
 const app = express()
 
-app.use(express.static(path.join(__dirname, "/public")))
 app.use(cors())
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, ("public/html/turntable.html")))
-})
-
-app.get("/artist", (req, res) => {
-    res.sendFile(path.join(__dirname, ("public/html/headphones.html")))
-})
-
-app.get("/schedulepage", (req,res) => {
-    res.sendFile(path.join(__dirname, ("public/html/schedule.html")))
+    res.send("Hello World!!!")
 })
 
 app.get("/artists", queries.getArtists)
