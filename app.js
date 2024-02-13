@@ -6,30 +6,20 @@ const app = express()
 
 app.use(cors())
 
-// const Pool = require('pg').Pool
-// require('dotenv').config
 
-// // let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
+const Pool = require('pg').Pool
+require('dotenv').config
 
-// const pool = new Pool({
-//     user: process.env.USER,
-//     host: process.env.HOST,
-//     database: process.env.DATABASE, 
-//     password: process.env.PASSWORD,
-//     port: 5432
-// })
+let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 
-// async function getPgVersion() {
-//     const client = await pool.connect();
-//     try {
-//         const result = await client.query('SELECT version()');
-//         console.log(result.rows[0]);
-//     } finally {
-//         client.release();
-//     }
-// }
+const pool = new Pool({
+    host: PGHOST,
+    user: PGUSER,
+    database: PGDATABASE, 
+    password: PGPASSWORD,
+    port: 5432,
 
-// getPgVersion();
+})
 
 app.get("/", (req, res) => {
     res.send("Hello World!!!")
