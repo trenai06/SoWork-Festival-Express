@@ -1,11 +1,16 @@
-// const Pool = require('pg').Pool
-// const pool = new Pool({
-//     user:'cbreaux2',
-//     host:'localhost',
-//     database:'musicfest', 
-//     password: 'wildrice',
-//     port: 5432const Pool = require('pg').Pool
-// })
+const Pool = require('pg').Pool
+require('dotenv').config
+
+let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
+
+const pool = new Pool({
+    host: PGHOST,
+    user: PGUSER,
+    database: PGDATABASE, 
+    password: PGPASSWORD,
+    port: 5432,
+
+})
 
 const getArtists = (req, res) => {
     pool.query('SELECT * FROM artists', (error, results) => {

@@ -7,19 +7,6 @@ const app = express()
 app.use(cors())
 
 
-const Pool = require('pg').Pool
-require('dotenv').config
-
-let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
-
-const pool = new Pool({
-    host: PGHOST,
-    user: PGUSER,
-    database: PGDATABASE, 
-    password: PGPASSWORD,
-    port: 5432,
-
-})
 
 app.get("/", (req, res) => {
     res.send("Hello World!!!")
